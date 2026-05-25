@@ -156,20 +156,19 @@
             text-shadow: 0px 2px 10px rgba(0,0,0,0.3); /* Sombra suave para mejorar lectura */
         }
         
-      .nombres-tit { 
+.nombres-tit { 
     font-family: 'Bodoni Moda', serif; 
-    /* Letra bastante más pequeña y sutil */
-    font-size: clamp(0.95rem, 3.5vw, 1.4rem); 
-    margin: 8px 0 0 0; /* Reducido un poco el margen superior */
+    /* Tamaño ultra-microscópico */
+    font-size: clamp(0.5rem, 1.5vw, 0.75rem); 
+    margin: 3px 0 0 0; /* Margen mínimo para que no quede flotando */
     font-weight: 100; 
     color: #000000; 
     position: relative; 
     animation: revealNames 2.5s cubic-bezier(0.2, 0, 0.2, 1) forwards;
     animation-delay: 0.5s;
     opacity: 0;
-    line-height: 1.1;
-    /* Sombra muy suave para que no opaque el texto pequeño */
-    text-shadow: 0px 1px 6px rgba(0,0,0,0.2); 
+    line-height: 1; 
+    text-shadow: none; /* Sin sombra para mantener la nitidez en tamaño mini */
 }
         /* Ajustamos el botón de música para que sea visible sobre la foto */
         .play-button {
