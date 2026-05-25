@@ -147,8 +147,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between; /* Distribuye el reproductor arriba y textos abajo si los hay */
-    background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.2) 100%); /* Capa sutil para legibilidad */
+    justify-content: space-between;
+    /* HE BORRADO LA LÍNEA DEL BACKGROUND AQUÍ */
 }
 
         /* Cambiamos el color de los textos a blanco para que contrasten con la foto de fondo, similar a tu referencia */
@@ -484,7 +484,7 @@
 
         .seccion-interactiva { 
             width: 100%; 
-            background-color: #ffffffa1; 
+      background-color: transparent; /* Cambia esto */
             padding: 60px 15px; 
             display: flex; 
             flex-direction: column; 
@@ -677,7 +677,13 @@
     object-fit: cover !important; 
     display: block;
 }
-
+.music-player { 
+    position: fixed; 
+    top: 20px; 
+    right: 20px; 
+    z-index: 9999; 
+    cursor: pointer; 
+}
 /* --- AJUSTE PARA MÓVIL (Aquí sí que ocupen más pantalla) --- */
 @media (max-width: 480px) {
     .galeria-grid {
@@ -699,9 +705,6 @@
     </style>
 </head>
 <body>
-
-    <audio id="musica-boda" src="musica.mp3" preload="auto" loop></audio>
-
     <div id="preloader">
         <div class="loader-names">Sofía & Alejandro</div>
         <div class="loader-line"></div>
@@ -709,14 +712,18 @@
 
     <div class="header-section">
         <img src="foto200.png" class="header-bg" alt="Sofía y Alejandro">
+       
     </div>
-    
-    <div class="header-content">
-        <div class="music-player" id="boton-musica">
-            <div class="play-button"></div>
-        </div>
+<!-- Botón y archivo de audio -->
+<div id="music-player" class="music-player" onclick="toggleMusic()">
+    <div class="play-button"></div>
+</div>
+<audio id="bg-music" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+</audio>
         
         <div class="escena-invitacion">
+            
             <div class="sobre-container">
                 <div class="iniciales-dd">S A</div>
                 <img src="sobre.png" class="sobre-img" alt="Sobre">
@@ -951,7 +958,7 @@
         <div class="creditos">
             realizado por Invitaciones Digitales Loja / 0960934663
         </div>
-    </div>
+  
 
     <script>
         // LÓGICA DEL PRELOADER
@@ -1109,6 +1116,27 @@
                 btn.disabled = false;
             }
         }
+        function toggleMusic() {
+        const audio = document.getElementById("bg-music");
+        const player = document.getElementById("music-player");
+        
+        if (audio.paused) {
+            audio.play();
+            player.classList.add("music-playing");
+        } else {
+            audio.pause();
+            player.classList.remove("music-playing");
+        }
+    }
+
+    // Opcional: Para que la música empiece sola tras la primera interacción (obligatorio en muchos navegadores)
+    window.addEventListener('click', () => {
+        const audio = document.getElementById("bg-music");
+        if (audio.paused) {
+            audio.play();
+            document.getElementById("music-player").classList.add("music-playing");
+        }
+    }, { once: true });
     </script>
 </body>
 </html>
