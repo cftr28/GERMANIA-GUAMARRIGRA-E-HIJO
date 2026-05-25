@@ -684,30 +684,22 @@
     z-index: 9999; 
     cursor: pointer; 
     
-    /* Estilo "Cristal" */
-    background: rgba(255, 255, 255, 0.1); 
-    backdrop-filter: blur(8px);       /* Esto es lo que lo hace ver profesional */
-    -webkit-backdrop-filter: blur(8px); /* Compatibilidad con Safari */
-    border: 1px solid rgba(255, 255, 255, 0.3); /* Borde sutil para definir el círculo */
+    /* 1. Elimina el fondo */
+    background: transparent; 
     
-    /* Tamaño pequeño pero con presencia */
-    width: 35px; 
-    height: 35px;
+    /* 2. Elimina el borde circular */
+    border-radius: 0;
+    
+    /* 3. Elimina la sombra */
+    box-shadow: none;
+    
+    width: 25px; 
+    height: 25px;
+    padding: 0;
+    
     display: flex; 
     align-items: center;
     justify-content: center;
-    
-    border-radius: 50%; 
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    
-    /* Transición suave para cualquier cambio */
-    transition: all 0.3s ease;
-}
-
-/* Efecto al pasar el mouse */
-.music-player:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: scale(1.1); /* Crece un poquito al tocarlo */
 }
 /* --- AJUSTE PARA MÓVIL (Aquí sí que ocupen más pantalla) --- */
 @media (max-width: 480px) {
